@@ -6,6 +6,7 @@
 if(isset($_POST['submit'])) {
   $validation = new UserValidator($_POST); 
   $errors = $validation->validate_form();
+
 }
 
 ?>
@@ -19,14 +20,28 @@ if(isset($_POST['submit'])) {
       <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
         <div class="shadow form-group">
           <label for="name">User Name</label>
-          <input type="text" class="shadow-sm form-control" id="username" name="username" aria-describedby="">
+          <input 
+            type="text" 
+            class="shadow-sm form-control" 
+            id="username" 
+            name="username" 
+            aria-describedby=""
+            value="<?php echo $_POST['username'] ?? '' ?>"
+          >
           <small class="error form-text text-danger">
             <?php echo $errors['username'] ?? ' ' ?>
           </small>
         </div>        
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
-          <input type="text" class="shadow-sm form-control" id="email" name="email" aria-describedby="emailHelp">
+          <input 
+            type="text" 
+            class="shadow-sm form-control" 
+            id="email" 
+            name="email" 
+            aria-describedby="emailHelp"
+            value="<?php echo $_POST['email'] ?? '' ?>"
+          >
           <small class="error form-text <?php echo $errors['email'] ? 'text-danger' : 'text-muted' ?> ">
             <?php echo $errors['email'] ?? "We'll never share your email with anyone else." ?>
           </small>
